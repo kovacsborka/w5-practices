@@ -243,59 +243,69 @@ console.log(myFourthObject.myString);       //megkapta az új értéket
 
 
 function loadEvent(){
-    console.log("my second function")
 
     let rootElement = document.getElementById("root")   //egyszer hívjuk meg a rootot
 
-    // let card = function (movieRecieved){ 
-    //     return `
-    //         <div class=card>
-    //             <h1>${movieRecieved.title}</h1>              
-    //             <time>${movieRecieved.year}</time>                                    
-    //             <h3>${movieRecieved.rate}</h3>                            
-    //         </div>
-    //         `;
-    // };
-
-    
-    
-    // for (const movieSend of movies) {
-        //     // console.log(movie.title)                               //minden film címét felsorolja konzolban
-        //     rootElement.insertAdjacentHTML("beforeend", card(movieSend));
-        // }
-        
-
-
     let card2 = function (title, year, rate){ 
         return `
-            <div class=card>
-                <h1>${title}</h1>              
-                <time>${year}</time>                                    
-                <h3>${rate}</h3>                            
-            </div>
-            `;
-    };
-
-    let anotherfavouritemovie = {
-        title: "The last scout boy",
-        year: 1991,
-        rate: 7
+        <div class="card">
+            <h1>${title}</h1>              
+            <time>${year}</time>                                    
+            <h3>${rate}</h3>                            
+        </div>
+        `;
+    
     }
 
-    rootElement.insertAdjacentHTML("beforeend", card2(anotherfavouritemovie.title, anotherfavouritemovie.year, anotherfavouritemovie.rate));
+    let renderAllCardElements = function(incomingMoviesArray){
+        let renderedCardList = "";
+        //forciklus ami végigmegy a cardsarrayen
+        for (const incomingMovie of incomingMoviesArray) {
+            //forciklus minden llépcsőjénél hozzáadja a renderedCardListhez az adott elemet a megfelelő div cardban 
+            renderedCardList += `               
+            <div class="card">
+                <h1>${incomingMovie.title}</h1>              
+                <time>${incomingMovie.year}</time>                                    
+                <h3>${incomingMovie.rate}</h3>                            
+            </div>
+            `
+        }
+        console.log(renderedCardList);
+        //returnöli az elkészült elemekkel feltöltött renderedCardListet
+        return renderedCardList;
+    }
 
+
+    let newGoodMovies = [];
 
     for (const movieSend of movies) {
-        // console.log(movie.title)                               //minden film címét felsorolja konzolban
+/* 
+        let newerThan2000 = false;
 
-        rootElement.insertAdjacentHTML("beforeend", card2(movieSend.title, movieSend.year, movieSend.rate));
+        if (movieSend.year > 2000) {
+            newerThan2000 = true
+        }
+ 
+ */
+        // movies.sort(function(a, b){return a.year - b.year})   //évszám szerint sorba rendezi
+
+        // console.log(movies);
+
+
+        // let floorRate = Math.floor(movieSend.rate)      //lefele kerekíti a ratet
+
+        if (movieSend.year > 2000 && movieSend.rate >= 8) {
+            newGoodMovies.push(movieSend)
+            // rootElement.insertAdjacentHTML("beforeend", card2(movieSend.title, movieSend.year, floorRate));
+        }
     }
+ 
 
-    console.log(movies)
+    newGoodMovies.sort(function(a, b){return a.year - b.year})
 
+    rootElement.insertAdjacentHTML("beforeend", renderAllCardElements(newGoodMovies))  //beküld a renderAllCardElementhez 
+
+    console.log(newGoodMovies);
+ 
 }
- window.addEventListener("load", loadEvent);
-
-
-
-
+window.addEventListener("load", loadEvent);
