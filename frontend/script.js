@@ -237,11 +237,6 @@ console.log(myFourthObject.myString);       //megkapta az új értéket
 
 //-------------------------------------------------------Practice----------------------------------------------------
 
-// window.addEventListener("load", function(){                //anonym function
-//     console.log("my first function")                       //ugyanazt fogja csinálni mint a loadevent
-// })
-
-
 function loadEvent(){
 
     let rootElement = document.getElementById("root")   //egyszer hívjuk meg a rootot
@@ -258,7 +253,9 @@ function loadEvent(){
     }
 
     let renderAllCardElements = function(incomingMoviesArray){
-        let renderedCardList = "";
+
+        let renderedCardList = `<div class="cards">`;
+        
         //forciklus ami végigmegy a cardsarrayen
         for (const incomingMovie of incomingMoviesArray) {
             //forciklus minden llépcsőjénél hozzáadja a renderedCardListhez az adott elemet a megfelelő div cardban 
@@ -270,42 +267,27 @@ function loadEvent(){
             </div>
             `
         }
+        renderedCardList += `</div>`
         console.log(renderedCardList);
         //returnöli az elkészült elemekkel feltöltött renderedCardListet
         return renderedCardList;
     }
 
 
-    let newGoodMovies = [];
+    let newGoodMovies = [];          //következő for ciklussal töltjük fel 
 
     for (const movieSend of movies) {
-/* 
-        let newerThan2000 = false;
-
-        if (movieSend.year > 2000) {
-            newerThan2000 = true
-        }
- 
- */
-        // movies.sort(function(a, b){return a.year - b.year})   //évszám szerint sorba rendezi
-
-        // console.log(movies);
-
-
-        // let floorRate = Math.floor(movieSend.rate)      //lefele kerekíti a ratet
-
         if (movieSend.year > 2000 && movieSend.rate >= 8) {
             newGoodMovies.push(movieSend)
-            // rootElement.insertAdjacentHTML("beforeend", card2(movieSend.title, movieSend.year, floorRate));
         }
     }
  
 
     newGoodMovies.sort(function(a, b){return a.year - b.year})
 
-    rootElement.insertAdjacentHTML("beforeend", renderAllCardElements(newGoodMovies))  //beküld a renderAllCardElementhez 
-
-    console.log(newGoodMovies);
+    rootElement.insertAdjacentHTML("beforeend", renderAllCardElements(newGoodMovies))  
+    //beküld a renderAllCardElementhez egy tömböt
+    //egy hosszú stringként
  
 }
 window.addEventListener("load", loadEvent);
