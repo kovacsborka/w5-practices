@@ -146,7 +146,7 @@ let g = {
         console.log("Hello");
     }
 }
-g.myMethod()
+g.myMethod()                 //ponttal tudunk beljebb lépkedni
 
  */
 
@@ -173,3 +173,129 @@ let i = h.anotherMethod("argument")
 console.log(i);
 console.log(h.anotherMethod("another argument")); 
 */
+
+
+// ------------------------------------------------------------------------------------------------------
+
+// OBJECTEK
+
+/* 
+let myString = "mikkamakka";     //érték átmentése másik változóba (akár number, string, boolean v. undefined)
+
+let mySecondString = myString;
+
+let myThirdString = "mikkamakka"
+
+console.log(myString);
+console.log(mySecondString);
+
+console.log(myString === mySecondString);       //true
+
+console.log(myString === myThirdString); 
+*/
+
+/* 
+let myObject = {
+    myString: "mikkamakka"
+};
+
+let mySecondObject = myObject;
+
+// console.log(myObject.myString)              //objecten belüli function futtatása (.)
+
+// console.log(myObject === mySecondObject)    //összehashonlítás
+
+let myThirdObject = {
+    myString: "mikkamakka"
+};
+
+// console.log(myObject === myThirdObject);    //false lett
+
+/* 
+console.log("" === "");            //string esetében true 
+console.log({} === {})             //false, mert hiába ugyanaz a tartalom, újra létrejön egy 
+                                    //   teljesen független object 
+*/
+/*
+mySecondObject.myString = "domdodom";       //visszamenőleg megváltoztatta a myObject myString értékét
+
+// console.log(myObject.myString);
+
+
+let myFourthObject = {...myObject};           //object másolás
+
+myFourthObject.myString = "vacskamati";
+
+console.log(myObject.myString);             //marad az eredeti érték
+console.log(myFourthObject.myString);       //megkapta az új értéket
+
+ */
+
+
+
+
+
+//-------------------------------------------------------Practice----------------------------------------------------
+
+// window.addEventListener("load", function(){                //anonym function
+//     console.log("my first function")                       //ugyanazt fogja csinálni mint a loadevent
+// })
+
+
+function loadEvent(){
+    console.log("my second function")
+
+    let rootElement = document.getElementById("root")   //egyszer hívjuk meg a rootot
+
+    // let card = function (movieRecieved){ 
+    //     return `
+    //         <div class=card>
+    //             <h1>${movieRecieved.title}</h1>              
+    //             <time>${movieRecieved.year}</time>                                    
+    //             <h3>${movieRecieved.rate}</h3>                            
+    //         </div>
+    //         `;
+    // };
+
+    
+    
+    // for (const movieSend of movies) {
+        //     // console.log(movie.title)                               //minden film címét felsorolja konzolban
+        //     rootElement.insertAdjacentHTML("beforeend", card(movieSend));
+        // }
+        
+
+
+    let card2 = function (title, year, rate){ 
+        return `
+            <div class=card>
+                <h1>${title}</h1>              
+                <time>${year}</time>                                    
+                <h3>${rate}</h3>                            
+            </div>
+            `;
+    };
+
+    let anotherfavouritemovie = {
+        title: "The last scout boy",
+        year: 1991,
+        rate: 7
+    }
+
+    rootElement.insertAdjacentHTML("beforeend", card2(anotherfavouritemovie.title, anotherfavouritemovie.year, anotherfavouritemovie.rate));
+
+
+    for (const movieSend of movies) {
+        // console.log(movie.title)                               //minden film címét felsorolja konzolban
+
+        rootElement.insertAdjacentHTML("beforeend", card2(movieSend.title, movieSend.year, movieSend.rate));
+    }
+
+    console.log(movies)
+
+}
+ window.addEventListener("load", loadEvent);
+
+
+
+
