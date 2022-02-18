@@ -256,16 +256,11 @@ function loadEvent(){
 
         let renderedCardList = `<div class="cards">`;
         
-        //forciklus ami végigmegy a cardsarrayen
+        //for ciklus ami végigmegy a cardsarrayen
         for (const incomingMovie of incomingMoviesArray) {
-            //forciklus minden llépcsőjénél hozzáadja a renderedCardListhez az adott elemet a megfelelő div cardban 
-            renderedCardList += `               
-            <div class="card">
-                <h1>${incomingMovie.title}</h1>              
-                <time>${incomingMovie.year}</time>                                    
-                <h3>${incomingMovie.rate}</h3>                            
-            </div>
-            `
+            //for ciklus minden llépcsőjénél hozzáadja a renderedCardListhez az adott elemet a megfelelő div cardban 
+            renderedCardList += card2(incomingMovie.title, incomingMovie.year, incomingMovie.rate)
+
         }
         renderedCardList += `</div>`
         console.log(renderedCardList);
