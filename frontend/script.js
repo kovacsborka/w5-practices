@@ -264,6 +264,12 @@ function loadEvent(){
         //     rootElement.insertAdjacentHTML("beforeend", card(movieSend));
         // }
         
+    // rootElement.insertAdjacentHTML ("beforeend", '
+    //     <div class="gridtest">
+    //         <h1>Amélie csodálatos élete</h1>          
+    //         <time>2001</time>                                    
+    //         <h3>8.1</h3>   
+    //     </div>');
 
 
     let card2 = function (title, year, rate){ 
@@ -271,7 +277,7 @@ function loadEvent(){
             <div class=card>
                 <h1>${title}</h1>              
                 <time>${year}</time>                                    
-                <h3>${rate}</h3>                            
+                <h3>${rate}</h3>                               
             </div>
             `;
     };
@@ -282,6 +288,14 @@ function loadEvent(){
         rate: 7
     }
 
+    rootElement.insertAdjacentHTML("beforeend", `
+        <div class="gridtest">
+            <h1>Amélie csodálatos élete</h1>          
+            <time>2001</time>                                    
+            <h3>8.1</h3>   
+        </div>
+    `)
+    
     rootElement.insertAdjacentHTML("beforeend", card2(anotherfavouritemovie.title, anotherfavouritemovie.year, anotherfavouritemovie.rate));
 
 

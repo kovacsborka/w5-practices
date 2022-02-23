@@ -1,13 +1,13 @@
-#root {
+/* #root {
     display: flex;
-    /* justify-content: center; */
+    justify-content: center; 
     flex-wrap: wrap;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     gap: 10px;
 }
-
+/*
 #root .card {
     display: flex;
     flex-grow: 1;
@@ -16,5 +16,38 @@
     flex-direction: column;
     border: 2px black solid;
     padding: 15px;
+} */
+
+/* auto	Default value. The size of the columns is determined by the size of the container	
+fit-content()	 	 
+max-content	Sets the size of each column depending on the largest item in the column	
+min-content	Sets the size of each column depending on the smallest item in the column	
+minmax(min.max)	Sets a size range greater than or equal to min and less than or equal to max	 
+length	Sets the size of the columns, by using a legal length value. Read about length units	
+%	Sets the size of the columns, by using a percent value */
+
+
+#root {
+    display: grid;
+    /* grid: 150px / auto auto auto; */
+/* 
+    grid-auto-columns: min-content; 
+    grid-auto-rows: min-content; 
+ */
+    grid-auto-flow: row dense;
+    background-color: cornsilk;
 }
 
+
+
+#root .gridtest {
+    grid-area: 2 / 1 / span 2 / span 3;
+}
+
+
+
+
+
+#root .card {
+    background-color: darkkhaki;
+}
